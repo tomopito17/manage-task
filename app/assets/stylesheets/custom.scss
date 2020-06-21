@@ -52,7 +52,7 @@ p {
 
 /* ヘッダー */
 .navbar-inverse {  //ADD B1
-  background-color: teal;
+  background-color: #0000cd;  //Pink #FF66CC;  //teal sample Color;
 }
 
 
@@ -69,34 +69,42 @@ p {
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
-  font-style: italic;  \\B3 ADD
+  font-style: italic;  //B3 ADD
   &:hover {  //B1	
 	    color: silver;	
 	    text-decoration: none;	
 	}  //B1
 }
 
-#logo:hover {  //B4
-  color: #fff;  //#fff
-  text-decoration: none;
-}
+// #header-list {
+//   color: #FFF;
+//   font-weight: bold;
+//   &:hover {  //B1	
+// 	    color: silver;	
+// 	    text-decoration: none;	
+// 	}  //B4
+// }
 
-// li .header-list {	//B1
-//   color: #fff !important;	
-//   font-weight: bold;	
-//   &:hover {	
-//     color: silver !important;	
-//   }	
-// }	
-	
-// #dropdown-title {	
-//   background-color: teal;	
-// }	
 
-// li .dropdown-header {  //add B1 Header Color
-//   background-color: rgba(200, 200, 200, 0.5);	
-//   font-weight: bold;	
-// }	
+li .header-list {//B4 li. header-list
+  color: #fff !important;	
+  font-weight: bold;	
+  &:hover {	
+    color: silver !important;	
+  }	
+}	
+
+#dropdown-title {	//ADD B6
+   background-color:  #0000cd;//teal;	
+}	
+
+
+li .dropdown-header {  //add B4 Header Color
+  background-color: rgba(200, 200, 200, 0.5);	
+  font-weight: bold;
+  //color: #fff !important;//add B5
+  
+}	
 	
 
 /* デバッグウインドウ */

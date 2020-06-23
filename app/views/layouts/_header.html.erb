@@ -1,11 +1,11 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Task App", root_path, id: "logo" %>
+    <%= link_to "タスクアプリ", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Top", root_path, class: "header-list" %></li>
+        <li><%= link_to "トップ", root_path, class: "header-list" %></li>
         <% if logged_in? %>
-          <li><%= link_to "Users", users_path, class: "header-list" %></li> <%#<li><%= link_to "Users", '#' %_></li> #copy users_path%>　
+          <li><%= link_to "ユーザ一覧", users_path, class: "header-list" %></li> <%#<li><%= link_to "Users", '#' %_></li> #copy users_path%>　
           <li><%#= link_to "create tasks", new_user_task_path(current_user), class: "header-list" %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle header-list" data-toggle="dropdown" id="dropdown-title"><%#<a href="#" class="dropdown-toggle" data-toggle="dropdown" _%>
@@ -13,14 +13,14 @@
             </a>
             <ul class="dropdown-menu">
               <li class="dropdown-header">the user</li>
-              <li><%= link_to "Show", current_user %></li>
-              <li><%= link_to "Settings", '#' %></li>
+              <li><%= link_to "情報表示", current_user %></li>
+              <li><%= link_to "設定", '#' %></li>
               <li class="divider"></li>
-              <li><%= link_to "Log out", logout_path, method: :delete %></li>
+              <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Log in", login_path, class: "header-list" %></li>  <!--B8 ADD, class: "header-list"-->
+          <li><%= link_to "ログイン", login_path, class: "header-list" %></li>  <!--B8 ADD, class: "header-list"-->
         <% end %>
       </ul>
     </nav>

@@ -1,7 +1,8 @@
-<% if @user.errors.any? %>
+<% if obj.errors.any? %> <%# if @user.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
-      The form contains <%= pluralize(@user.errors.count, "error") %>.
+      The form contains < %= pluralize(@user.errors.count, "error") %> <%#C6 UPDATE%>
+      入力した内容に<%= obj.errors.count %>件のエラーがあります。
     </div>
     <ul>
     <% @user.errors.full_messages.each do |msg| %>

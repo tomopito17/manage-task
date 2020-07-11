@@ -1,4 +1,45 @@
 class TasksController < ApplicationController
-  def new
+  #before_action :set_user
+  #before_action :set_task, only: %i(show edit update destroy)
+  #before_action :logged_in_user
+  #obefore_action :correct_user #C6
+  
+  def index
+    #@tasks = Task.all  #C6
+    @User.find(params[:user_id])#C6opt
+    @tasks = @user.tasks
   end
+  
+  def show
+    @task = Task.find(params[:id])
+  end
+
+  def new
+    @task = Task.new#C4 Add original
+  end
+  
+  def create
+    @user= User.find(params[:user_id]) #C6opt
+    @task = @user.tasks.new(task_params)
+    #@task = @User.new(params[user_id ])
+    if @task.save
+      flash[:success] = "タスクを新規作成しました。"
+      redirect_to user_tasks_url @user
+    else
+      render :new
+    end
+  end
+  
+  def set_task
+    unless @task = @user.tasks.find_by(id: params[:id])
+      #flash[:danger] = "権限がありません。"
+      redirect_to user_tasks_url @user
+    end
+  end
+  
+  private #C6opt
+  def task_params
+    params.require(:task).permit(:name,:description)
+  end
+  
 end

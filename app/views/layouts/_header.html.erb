@@ -11,7 +11,7 @@
             <a href="#" class="dropdown-toggle header-list" data-toggle="dropdown" id="dropdown-title"><%#<a href="#" class="dropdown-toggle" data-toggle="dropdown" _%>
               <%= current_user.name %> <b class="caret"></b> <!--Add_B7  Account <b class="caret"></b>-->
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu"><%#%>
               <li class="dropdown-header">the user</li>
               <li><%= link_to "プロフィール", current_user %></li>
               <li><%= link_to "設定", edit_user_path(current_user) %></li>

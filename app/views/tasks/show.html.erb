@@ -2,16 +2,14 @@
 
 <h1>タスク詳細</h1>
 <div class="main tasks-show">
-  <div class="container">
-    <div class="tasks-show-item">
-      <p><%= @task.content %></p>
-    </div>
-  </div>
+  <!--<div class="container">-->
+  <!--  <div class="tasks-show-item">-->
+  <!--    <p>< %= @task.content %></p>-->
+  <!--  </div>-->
+  <!--</div>-->
 </div>
 
-<%
-=begin
-%>
+
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <table class="table table-bordered" id="table-task">
@@ -40,14 +38,18 @@
         </tr>
       </tbody>
     </table>
-    
+</div>
+
+<%
+=begin
+%>    
     <div>
       <%= link_to "編集", edit_user_task_path(@user, @task), class: "btn btn-lg btn-success" %>
       <%= link_to "削除", user_task_path(@user, @task), method: :delete,
       data: { confirm: "「#{@task.name}」を削除します。よろしいですか？" }, class: "btn btn-lg btn-danger" %>
     </div>
   </div>    
-</div>
+
 
 <%
 =end

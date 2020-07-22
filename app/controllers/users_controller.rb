@@ -1,11 +1,27 @@
-class UsersController < ApplicationController
+class UsersController < ApplicationController #D1 before
+  before_action :set_user, only: %i(show edit update destroy)
+  before_action :logged_in_user, only: %i(index show edit update destroy)
+  before_action :admin_user, only: %i(index destroy)
+  before_action :correct_user, only: %i(edit update)
+  before_action :admin_or_correct, only: %i(show)
+  
+  def index#D1
+    @users = User.paginate(page: params[:page], per_page: 20)
+  end
   
   def show
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])#C5
+    #@user = User.find(params[:user_id])
+    #@task = Task.find(params[:id])
   end
 
   def new
+    if logged_in? && !current_user.admin? #D1
+      flash[:info] = 'すでにログインしています。'
+      redirect_to current_user
+    end
     @user = User.new
+    #@user = User.find(params[:id])
   end
   
   def create
@@ -19,9 +35,41 @@ class UsersController < ApplicationController
     end
   end
   
+  def edit
+    case @user.id
+    when 1, 2, 3
+      flash[:danger] = "このユーザーは編集できません。"
+      redirect_to @user
+    end
+  end
+  
+  def update
+    if @user.update_attributes(user_params)
+      flash[:success] = "ユーザー情報を更新しました。"
+      redirect_to @user
+    else
+      render :edit      
+    end
+  end
+  
+  # def destroy
+  #   case @user.id
+  #   when 1, 2, 3
+  #     flash[:danger] = "このユーザーは削除できません。"
+  #     redirect_to users_url
+  #   else
+  #     @user.destroy
+  #     flash[:success] = "#{@user.name}のデータを削除しました。"
+  #     redirect_to users_url
+  #   end
+  # end
   private
   
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+    
+    def set_user#ハッシュタグからD1
+      @user = User.find(params[:id])
     end
 end
